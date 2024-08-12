@@ -1,5 +1,7 @@
 package com.project.Task_SpringBoot.services.auth;
 
+import com.project.Task_SpringBoot.dto.SignUpRequest;
+import com.project.Task_SpringBoot.dto.UserDto;
 import com.project.Task_SpringBoot.entities.User;
 import com.project.Task_SpringBoot.enums.UserRole;
 import com.project.Task_SpringBoot.reposistory.UserRepository;
@@ -19,7 +21,7 @@ public class AuthServiceImpl implements AuthService {
     @PostConstruct
     public void createAdminAccount() {
         Optional<User> user = userRepository.findByUserRole(UserRole.ADMIN);
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             User newUser = new User();
             newUser.setEmail("test@gmail.com");
             newUser.setName("admin");
@@ -33,4 +35,19 @@ public class AuthServiceImpl implements AuthService {
 
     }
 
+    @Override
+    public UserDto signUp(SignUpRequest signUpRequest) {
+        User user = new User();
+        user.setEmail(signUpRequest.getEmail());
+        user.setName(signUpRequest.getName());
+        user.setPassword(new BCryptPasswordEncoder().encode(signUpRequest.getPassword()));
+        user.setUserRole(UserRole.EMPLOYEE);
+        User createdUser = userRepository.save(user);
+        return createdUser.getUserDto();
+    }
+
+    @Override
+    public boolean hasUserEmail(String email) {
+        return userRepository.findFirstByEmail(email).isPresent();
+    }
 }
