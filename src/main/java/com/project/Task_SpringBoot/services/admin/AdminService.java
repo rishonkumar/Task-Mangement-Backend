@@ -29,4 +29,6 @@ public interface AdminService {
 
     CommentDto createComment(Long taskId, String content);
 
+    List<CommentDto> getCommentsByTaskId(Long taskId);
+
 }
