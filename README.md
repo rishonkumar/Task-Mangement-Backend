@@ -1,41 +1,47 @@
-﻿# Task-Mangement-Backend
+# Task Management Backend
 
-Endpoint for Task Creation
+## API Endpoints
 
-URL: POST /api/tasks
-Description: Creates a new task.
-Request Body: JSON object with task details (e.g., title, description, due date).
-Response: Success or error message.
-Endpoint for Retrieving All Tasks
+### Task Management
 
-URL: GET /api/tasks
-Description: Retrieves a list of all tasks.
-Response: JSON array of tasks.
-Endpoint for Retrieving a Specific Task
+#### Create Task
+- **URL:** `POST /api/tasks`
+- **Description:** Creates a new task
+- **Request Body:** JSON object with task details (e.g., title, description, due date)
+- **Response:** Success or error message
 
-URL: GET /api/tasks/{id}
-Description: Retrieves details of a specific task by its ID.
-Response: JSON object of the task.
-Endpoint for Updating a Task
+#### Retrieve All Tasks
+- **URL:** `GET /api/tasks`
+- **Description:** Retrieves a list of all tasks
+- **Response:** JSON array of tasks
 
-URL: PUT /api/tasks/{id}
-Description: Updates details of an existing task.
-Request Body: JSON object with updated task details.
-Response: Success or error message.
-Endpoint for Deleting a Task
+#### Retrieve Specific Task
+- **URL:** `GET /api/tasks/{id}`
+- **Description:** Retrieves details of a specific task by its ID
+- **Response:** JSON object of the task
 
-URL: DELETE /api/tasks/{id}
-Description: Deletes a specific task by its ID.
-Response: Success or error message.
-Endpoint for User Authentication
+#### Update Task
+- **URL:** `PUT /api/tasks/{id}`
+- **Description:** Updates details of an existing task
+- **Request Body:** JSON object with updated task details
+- **Response:** Success or error message
 
-URL: POST /api/auth/login
-Description: Authenticates a user and returns a token.
-Request Body: JSON object with username and password.
-Response: JSON object with authentication token.
-Endpoint for User Registration
+#### Delete Task
+- **URL:** `DELETE /api/tasks/{id}`
+- **Description:** Deletes a specific task by its ID
+- **Response:** Success or error message
 
-URL: POST /api/auth/register
-Description: Registers a new user.
-Request Body: JSON object with user details (e.g., username, password).
-Response: Success or error message.
+### User Authentication
+
+#### User Login
+- **URL:** `POST /api/auth/login`
+- **Description:** Authenticates a user and returns a token
+- **Request Body:** JSON object with username and password
+- **Response:** JSON object with authentication token
+
+#### User Registration
+- **URL:** `POST /api/auth/register`
+- **Description:** Registers a new user
+- **Request Body:** JSON object with user details (e.g., username, password)
+- **Response:** Success or error message
+
