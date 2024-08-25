@@ -1,6 +1,7 @@
 package com.project.Task_SpringBoot.controller.admin;
 
 
+import com.project.Task_SpringBoot.dto.CommentDto;
 import com.project.Task_SpringBoot.dto.TaskDto;
 import com.project.Task_SpringBoot.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,13 @@ public class AdminController {
     @GetMapping("/task/search/{title}")
     public ResponseEntity<List<TaskDto>> searchTask(@PathVariable String title) {
         return ResponseEntity.ok(adminService.searchTaskByTitle(title));
+    }
+
+    @PostMapping("/task/comment/{taskId}")
+    public ResponseEntity<CommentDto>createComment(@PathVariable Long taskId, @RequestParam String content) {
+        CommentDto createdComment = adminService.createComment(taskId,content);
+        if (createdComment == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
 
 
