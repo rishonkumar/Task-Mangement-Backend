@@ -1,6 +1,7 @@
 package com.project.Task_SpringBoot.services.admin;
 
 
+import com.project.Task_SpringBoot.dto.CommentDto;
 import com.project.Task_SpringBoot.dto.TaskDto;
 import com.project.Task_SpringBoot.dto.UserDto;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,9 @@ public interface AdminService {
     TaskDto updateTask(TaskDto taskDto, Long id);
 
     List<TaskDto> searchTaskByTitle(String title);
+
+    CommentDto createComment(Long taskId, String content);
+
+    List<CommentDto> getCommentsByTaskId(Long taskId);
 
 }
