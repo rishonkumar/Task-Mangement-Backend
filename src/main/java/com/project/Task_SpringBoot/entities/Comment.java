@@ -1,6 +1,5 @@
 package com.project.Task_SpringBoot.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.Task_SpringBoot.dto.CommentDto;
 import jakarta.persistence.*;
@@ -20,16 +19,13 @@ public class Comment {
 
     private String content;
 
-
     private Date createdAt;
-
-    private Long taskId;
 
     private String postedBy;
 
-    private User user;
+    private User User;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "task_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
@@ -41,9 +37,7 @@ public class Comment {
         commentDto.setContent(content);
         commentDto.setCreatedAt(createdAt);
         commentDto.setPostedBy(postedBy);
-        commentDto.setTaskId(taskId);
+        commentDto.setTaskId(task != null ? task.getId() : null);  // Assuming Task has a getId() method
         return commentDto;
     }
-
-
 }
